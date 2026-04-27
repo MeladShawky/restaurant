@@ -45,6 +45,8 @@ public class userService implements IUserService {
                     user.setLastName(req.getLastName());
                     user.setEmail(req.getEmail());
                     user.setPassword(passwordEncoder.encode(req.getPassword()));
+                    user.setAddress(req.getAddress());
+                    user.setPhone(req.getPhone());
 
                     // Assign default ROLE_USER
                     Role userRole = roleRepository.findByName("ROLE_USER")
@@ -62,6 +64,8 @@ public class userService implements IUserService {
                 .map(existingUser -> {
                     existingUser.setFirstName(request.getFirstName());
                     existingUser.setLastName(request.getLastName());
+                    existingUser.setAddress(request.getAddress());
+                    existingUser.setPhone(request.getPhone());
                     return userRepository.save(existingUser);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("User not found!"));

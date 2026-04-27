@@ -87,38 +87,6 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/by/brand-and-name")
-    public ResponseEntity<ApiResponse> getProductByBrandAndName(
-            @RequestParam String brand,
-            @RequestParam String name) {
-        try {
-            List<Product> products = productService.getProductsByBrandAndName(brand, name);
-            if (products.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse("No products found", null));
-            }
-            List<ProductDto> convertedProducts = productService.getConvertedProducts(products);
-            return ResponseEntity.ok(new ApiResponse("Products fetched successfully", convertedProducts));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(e.getMessage(), null));
-        }
-    }
-
-    @GetMapping("/by/category-and-brand")
-    public ResponseEntity<ApiResponse> getProductByCategoryAndBrand(
-            @RequestParam String category,
-            @RequestParam String brand) {
-        try {
-            List<Product> products = productService.getProductsByCategoryAndBrand(category, brand);
-            if (products.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse("No products found", null));
-            }
-            List<ProductDto> convertedProducts = productService.getConvertedProducts(products);
-            return ResponseEntity.ok(new ApiResponse("Products fetched successfully", convertedProducts));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(e.getMessage(), null));
-        }
-    }
-
     @GetMapping("/by/name")
     public ResponseEntity<ApiResponse> getProductByName(@RequestParam String name) {
         try {
@@ -127,21 +95,6 @@ public class ProductController {
             if (name.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body(new ApiResponse("Name cannot be empty", null));
-            }
-            List<ProductDto> convertedProducts = productService.getConvertedProducts(products);
-            return ResponseEntity.ok(new ApiResponse("Products fetched successfully", convertedProducts));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(e.getMessage(), null));
-        }
-    }
-
-    @GetMapping("/by/brand")
-    public ResponseEntity<ApiResponse> getProductByBrand(@RequestParam String brand) {
-        try {
-            List<Product> products = productService.getProductsByBrand(brand);
-            if (brand.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body(new ApiResponse("Brand cannot be empty", null));
             }
             List<ProductDto> convertedProducts = productService.getConvertedProducts(products);
             return ResponseEntity.ok(new ApiResponse("Products fetched successfully", convertedProducts));
@@ -165,20 +118,4 @@ public class ProductController {
         }
     }
 
-
-    @GetMapping("/count/by-brand/and-name")
-    public ResponseEntity<ApiResponse> countProductsByBrandAndName(
-            @RequestParam String brand,
-            @RequestParam String name) {
-        try {
-            count = productService.countProductsByBrandAndName(brand, name);
-            if (brand.isEmpty() || name.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body(new ApiResponse("Brand and name cannot be empty", null));
-            }
-            return ResponseEntity.ok(new ApiResponse("Products fetched successfully", count));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(e.getMessage(), null));
-        }
-    }
 }
