@@ -1,0 +1,22 @@
+package com.meloCoding.dto;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import com.meloCoding.models.Category;
+
+import lombok.Data;
+
+@Data
+public class ProductDto {
+    private Long id;
+    private String name;
+    private BigDecimal price;
+    private int inventory;
+    private String description;
+
+    private Category category;
+
+    private List<ImageDto> images;
+
+}

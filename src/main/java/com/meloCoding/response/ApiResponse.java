@@ -1,0 +1,11 @@
+package com.meloCoding.response;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class ApiResponse {
+    private String resulte;
+    private Object data;
+}
