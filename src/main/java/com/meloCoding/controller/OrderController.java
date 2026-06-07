@@ -26,9 +26,11 @@ public class OrderController {
     private final IOrderService orderService;
 
     @PostMapping("/order")
-    public ResponseEntity<ApiResponse> createOrder(@RequestParam Long userId) {
+    public ResponseEntity<ApiResponse> createOrder(
+            @RequestParam Long userId,
+            @RequestParam(required = false) String promoCode) {
         try {
-            Order order = orderService.placeOrder(userId);
+            Order order = orderService.placeOrder(userId, promoCode);
             OrderDto orderDto = orderService.convertToDto(order);
             return ResponseEntity.ok(new ApiResponse("Item Order Success!", orderDto));
         } catch (Exception e) {

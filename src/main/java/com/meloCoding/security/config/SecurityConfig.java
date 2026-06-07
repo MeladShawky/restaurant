@@ -43,6 +43,7 @@ public class SecurityConfig {
                     .requestMatchers("/api/v1/products/**").permitAll()
                     .requestMatchers("/api/v1/categories/**").permitAll()
                     .requestMatchers("/api/v1/images/**").permitAll()
+                    .requestMatchers("/api/v1/user-images/**").permitAll()
                     .anyRequest().authenticated()
             );
 

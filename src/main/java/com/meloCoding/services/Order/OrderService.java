@@ -26,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class OrderService implements IOrderService {
+
     private final OrderRepository orderRepository;
     private final ICartService cartService;
     private final ModelMapper modelMapper;
@@ -33,13 +34,41 @@ public class OrderService implements IOrderService {
 
     @Transactional
     @Override
-    public Order placeOrder(Long userId) {
+    public Order placeOrder(Long userId, String promoCode) {
         Cart cart = cartService.getCartByUserId(userId);
 
         Order order = createOrder(cart);
         List<OrderItem> orderItems = createOrderItems(order, cart);
         order.setOrderItems(new HashSet<>(orderItems));
-        order.setTotalAmount(calculateTotalAmount(orderItems));
+
+        BigDecimal baseTotal = calculateTotalAmount(orderItems);
+        BigDecimal discount = BigDecimal.ZERO;
+
+        if (promoCode != null && !promoCode.trim().isEmpty()) {
+            String code = promoCode.trim().toUpperCase();
+            if (code.equals("SALAD20")) {
+                BigDecimal saladTotal = BigDecimal.ZERO;
+                for (OrderItem item : orderItems) {
+                    if (item.getProduct().getName().toLowerCase().contains("salad")) {
+                        saladTotal = saladTotal.add(item.getPrice().multiply(BigDecimal.valueOf(item.getQuantity())));
+                    }
+                }
+                discount = saladTotal.multiply(BigDecimal.valueOf(0.20));
+            } else if (code.equals("NOODLES")) {
+                boolean hasNoodles = orderItems.stream()
+                        .anyMatch(item -> item.getProduct().getName().toLowerCase().contains("noodle"));
+                if (hasNoodles) {
+                    discount = BigDecimal.valueOf(5.00);
+                }
+            }
+        }
+
+        BigDecimal finalTotal = baseTotal.subtract(discount);
+        if (finalTotal.compareTo(BigDecimal.ZERO) < 0) {
+            finalTotal = BigDecimal.ZERO;
+        }
+
+        order.setTotalAmount(finalTotal);
 
         // Decrease inventory for each ordered product
         for (OrderItem item : orderItems) {
