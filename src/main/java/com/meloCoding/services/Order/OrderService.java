@@ -18,8 +18,8 @@ import com.meloCoding.models.Order;
 import com.meloCoding.models.OrderItem;
 import com.meloCoding.models.Product;
 import com.meloCoding.services.Cart.ICartService;
-import com.meloCoding.services.repository.OrderRepository;
-import com.meloCoding.services.repository.productRepository;
+import com.meloCoding.repository.OrderRepository;
+import com.meloCoding.repository.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,7 +30,7 @@ public class OrderService implements IOrderService {
     private final OrderRepository orderRepository;
     private final ICartService cartService;
     private final ModelMapper modelMapper;
-    private final productRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Transactional
     @Override

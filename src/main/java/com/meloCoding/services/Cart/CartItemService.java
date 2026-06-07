@@ -9,8 +9,8 @@ import com.meloCoding.models.Cart;
 import com.meloCoding.models.CartItem;
 import com.meloCoding.models.Product;
 import com.meloCoding.services.product.IProductService;
-import com.meloCoding.services.repository.CartItemRepository;
-import com.meloCoding.services.repository.CartRepository;
+import com.meloCoding.repository.CartItemRepository;
+import com.meloCoding.repository.CartRepository;
 
 import lombok.RequiredArgsConstructor;
 

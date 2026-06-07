@@ -1,4 +1,4 @@
-package com.meloCoding.services.repository;
+package com.meloCoding.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.meloCoding.models.Image;

@@ -12,8 +12,8 @@ import com.meloCoding.dto.UserImageDto;
 import com.meloCoding.exceptions.ResourceNotFoundException;
 import com.meloCoding.models.User;
 import com.meloCoding.models.UserImage;
-import com.meloCoding.services.repository.UserImageRepository;
-import com.meloCoding.services.repository.UserRepository;
+import com.meloCoding.repository.UserImageRepository;
+import com.meloCoding.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

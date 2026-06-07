@@ -1,4 +1,4 @@
-package com.meloCoding.services.repository;
+package com.meloCoding.services.product.repository;
 
 import java.util.List;
 

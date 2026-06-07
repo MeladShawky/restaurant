@@ -16,7 +16,7 @@ import com.meloCoding.exceptions.ResourceNotFoundException;
 import com.meloCoding.models.Image;
 import com.meloCoding.models.Product;
 import com.meloCoding.services.product.IProductService;
-import com.meloCoding.services.repository.ImageRepository;
+import com.meloCoding.repository.ImageRepository;
 
 @Service
 public class ImageService implements IImageService {

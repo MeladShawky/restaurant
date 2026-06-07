@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.meloCoding.exceptions.ResourceNotFoundException;
 import com.meloCoding.models.Cart;
 import com.meloCoding.models.User;
-import com.meloCoding.services.repository.CartItemRepository;
-import com.meloCoding.services.repository.CartRepository;
+import com.meloCoding.repository.CartItemRepository;
+import com.meloCoding.repository.CartRepository;
 
 import lombok.RequiredArgsConstructor;
 

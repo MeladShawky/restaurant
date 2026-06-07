@@ -14,9 +14,9 @@ import com.meloCoding.models.Image;
 import com.meloCoding.models.Product;
 import com.meloCoding.request.AddProductRequest;
 import com.meloCoding.request.ProductUpdateRequest;
-import com.meloCoding.services.repository.CategoryRepository;
-import com.meloCoding.services.repository.ImageRepository;
-import com.meloCoding.services.repository.productRepository;
+import com.meloCoding.repository.CategoryRepository;
+import com.meloCoding.repository.ImageRepository;
+import com.meloCoding.repository.ProductRepository;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 public class ProductService implements IProductService {
 
-    private final productRepository productRepository;
+    private final ProductRepository productRepository;
 
     private final ImageRepository imageRepository;
 

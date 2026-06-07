@@ -16,8 +16,8 @@ import com.meloCoding.models.User;
 import com.meloCoding.request.CreateUserRequest;
 import com.meloCoding.request.UpdateUserRequest;
 import com.meloCoding.security.user.ShopUserDetails;
-import com.meloCoding.services.repository.RoleRepository;
-import com.meloCoding.services.repository.UserRepository;
+import com.meloCoding.repository.RoleRepository;
+import com.meloCoding.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.meloCoding.exceptions.AlreadyExistsException;
 import com.meloCoding.exceptions.ResourceNotFoundException;
 import com.meloCoding.models.Category;
-import com.meloCoding.services.repository.CategoryRepository;
+import com.meloCoding.repository.CategoryRepository;
 
 import lombok.RequiredArgsConstructor;
 

@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.meloCoding.models.Role;
 import com.meloCoding.models.User;
-import com.meloCoding.services.repository.RoleRepository;
-import com.meloCoding.services.repository.UserRepository;
+import com.meloCoding.repository.RoleRepository;
+import com.meloCoding.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

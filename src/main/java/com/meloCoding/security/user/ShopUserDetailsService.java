@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.meloCoding.models.User;
-import com.meloCoding.services.repository.UserRepository;
+import com.meloCoding.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
